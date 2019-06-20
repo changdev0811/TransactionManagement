@@ -1,28 +1,30 @@
-package com.login.controller;
+package com.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import com.login.dao.RegisterDao;
+import com.dao.LoginDao;
 
-@WebServlet(name = "Register", urlPatterns = "/Register")
-public class Register extends HttpServlet {
+@WebServlet(name = "Login", urlPatterns = "/Login")
+public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String accountNo = request.getParameter("accountNo");
         String pinNo = request.getParameter("pinNo");
-        String contactNo = request.getParameter("contactNo");
 
-        RegisterDao dao=new RegisterDao();
-        if(dao.register(accountNo, pinNo, contactNo)){
+        LoginDao dao=new LoginDao();
+
+        if(dao.check(accountNo, pinNo)){
+            HttpSession session=request.getSession();
+            session.setAttribute("accountNo",accountNo);
             response.sendRedirect("users.jsp");
+        }else{
+            response.sendRedirect("index.jsp");
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 }
