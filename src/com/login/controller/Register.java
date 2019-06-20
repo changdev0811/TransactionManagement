@@ -5,26 +5,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import com.login.dao.LoginDao;
+import com.login.dao.RegisterDao;
 
-@WebServlet(name = "Login", urlPatterns = "/Login")
-public class Login extends HttpServlet {
+@WebServlet(name = "Register", urlPatterns = "/Register")
+public class Register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String accountNo = request.getParameter("accountNo");
         String pinNo = request.getParameter("pinNo");
+        String contactNo = request.getParameter("contactNo");
 
-        LoginDao dao=new LoginDao();
-
-        if(dao.check(accountNo, pinNo)){
-            HttpSession session=request.getSession();
-            session.setAttribute("accountNo",accountNo);
+        RegisterDao dao=new RegisterDao();
+        if(dao.register(accountNo, pinNo, contactNo)){
             response.sendRedirect("users.jsp");
-        }else{
-            response.sendRedirect("index.jsp");
         }
     }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
 }

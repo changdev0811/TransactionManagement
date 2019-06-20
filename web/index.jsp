@@ -20,7 +20,7 @@
 //        response.sendRedirect("index.jsp");
     } else {
         // user IS logged in, do something: set model or do whatever you need
-        response.sendRedirect("transaction.jsp");
+        response.sendRedirect("users.jsp");
     }
 %>
 <form class="form-signin" action="Login" method="post">
