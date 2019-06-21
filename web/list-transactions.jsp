@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
     if (session == null || session.getAttribute("accountNo") == null) {
         // user is not logged in, do something about it
@@ -35,13 +36,13 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="users.jsp">
                                 <span data-feather="users"></span>
                                 Users
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="transactions.jsp">
                                 <span data-feather="bar-chart-2"></span>
                                 Transactions
                             </a>
@@ -61,20 +62,20 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                            <th>Header</th>
+                            <th>Description</th>
+                            <th>Criteria</th>
+                            <th>Amount</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1,001</td>
-                            <td>Lorem</td>
-                            <td>ipsum</td>
-                            <td>dolor</td>
-                            <td>sit</td>
-                        </tr>
+                            <c:forEach items="${transactions}" var="transaction">
+                                <tr>
+                                    <td>1</td>
+                                    <td><c:out value="${transaction.description}"/></td>
+                                    <td><c:out value="${transaction.criteria}"/></td>
+                                    <td><c:out value="${transaction.amount}"/></td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>

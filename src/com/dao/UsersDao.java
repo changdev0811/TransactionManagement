@@ -22,7 +22,7 @@ public class UsersDao {
 
     public ArrayList<User> getUsers() throws SQLException {
         String query = "select * from clients";
-        ArrayList<User> persons = new ArrayList<User>();
+        ArrayList<User> users = new ArrayList<User>();
         Statement stmt = connection.createStatement();
         ResultSet res = stmt.executeQuery(query);
         while (res.next()) {
@@ -30,8 +30,8 @@ public class UsersDao {
             user.setAccountNo(Integer.parseInt(res.getString("accountNo")));
             user.setPinNo(Integer.parseInt(res.getString("pinNo")));
             user.setContactNo(Integer.parseInt(res.getString("contactNo")));
-            persons.add(user);
+            users.add(user);
         }
-        return persons;
+        return users;
     }
 }
