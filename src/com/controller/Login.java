@@ -38,6 +38,7 @@ public class Login extends HttpServlet {
                 response.sendRedirect("transactions.jsp");
             }
         }else{
+            request.getSession().setAttribute("errorMessage", "Wrong Account");
             response.sendRedirect("index.jsp");
         }
     }

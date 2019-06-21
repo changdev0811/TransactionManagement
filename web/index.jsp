@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Login</title>
@@ -24,6 +25,15 @@
     <div class="text-center mb-4">
         <h1 class="h3 mb-3 font-weight-normal">Sing In</h1>
     </div>
+    <c:if test = "${not empty errorMessage}">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>${errorMessage}!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <c:remove var="errorMessage" scope="session" />
+    </c:if>
     <div class="form-label-group">
         <input type="text" id="accountNo" name="accountNo" class="form-control" placeholder="Account No" required autofocus>
         <label for="accountNo">Account No</label>
