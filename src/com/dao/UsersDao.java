@@ -21,7 +21,7 @@ public class UsersDao {
     }
 
     public ArrayList<User> getUsers() throws SQLException {
-        String query = "select * from clients";
+        String query = "select * from clients where UserLevel=1";
         ArrayList<User> users = new ArrayList<User>();
         Statement stmt = connection.createStatement();
         ResultSet res = stmt.executeQuery(query);

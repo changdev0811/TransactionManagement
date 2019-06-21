@@ -23,12 +23,6 @@
 <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sign out</a>
-            </li>
-        </ul>
     </nav>
     <div class="container-fluid">
         <div class="row">
@@ -52,16 +46,54 @@
             </nav>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Transactions</h1>
-                </div>
-
                 <h2>Transactions</h2>
+                <form action="Transactions" method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="accountNo">Account No</label>
+                            <input type="text" name="accountNo" class="form-control" id="accountNo" placeholder="Account No">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="description">Description</label>
+                            <input type="text" name="description" class="form-control" id="description" placeholder="Description">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="criteria">Criteria</label>
+                            <input type="text" name="criteria" class="form-control" id="criteria" placeholder="Criteria">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="result">Result</label>
+                            <select class="form-control" name="result" id="result">
+                                <option value="Win">Win</option>
+                                <option value="Lose">Lose</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="stack">Stack</label>
+                            <input type="text" name="stack" class="form-control" id="stack" placeholder="Stack">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="price">Price</label>
+                            <input type="text" name="price" class="form-control" id="price" placeholder="Price">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="direction">Direction</label>
+                            <select class="form-control" name="direction" id="direction">
+                                <option value="Credit">Credit</option>
+                                <option value="Debit">Debit</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>AccountNo</th>
                             <th>Description</th>
                             <th>Criteria</th>
                             <th>Result</th>
@@ -75,6 +107,7 @@
                             <c:forEach items="${transactions}" var="transaction" varStatus="no">
                                 <tr>
                                     <td><c:out value="${no.count}"/></td>
+                                    <td><c:out value="${transaction.accountNo}"/></td>
                                     <td><c:out value="${transaction.description}"/></td>
                                     <td><c:out value="${transaction.criteria}"/></td>
                                     <td><c:out value="${transaction.result}"/></td>
@@ -86,6 +119,8 @@
                             </c:forEach>
                         </tbody>
                     </table>
+                    <p class="text-success d-inline">Income : ${income}</p>
+                    <p class="text-danger d-inline">Outgoing: ${outgoing}</p>
                 </div>
             </main>
         </div>
@@ -99,6 +134,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 <script>
     // $(function() {
 

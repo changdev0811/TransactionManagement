@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class LoginDao {
-    String sql="select *from clients where AccountNo=? and PinNo=? and UserLevel=2";
+    String sql="select *from clients where AccountNo=? and PinNo=?";
     String url = "jdbc:mysql://127.0.0.1:3306/bank";
     String user = "root";
     String password = "";

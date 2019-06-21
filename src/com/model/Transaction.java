@@ -5,14 +5,21 @@ public class Transaction {
 
     }
 
-    public String description;
-    public String criteria;
-    public String result;
-    public Double stack;
-    public Double price;
-    public Double amount;
-    public String direction;
-    public int userID;
+    private int accountNo;
+    private String description;
+    private String criteria;
+    private String result;
+    private Double stack;
+    private Double price;
+    private Double amount;
+    private String direction;
+
+    public int getAccountNo(){
+        return accountNo;
+    }
+    public void setAccountNo(int accountNo){
+        this.accountNo = accountNo;
+    }
 
     public String getDescription(){
         return description;
@@ -69,13 +76,4 @@ public class Transaction {
     public void setDirection(String direction){
         this.direction = direction;
     }
-
-    public int getUserID(){
-        return userID;
-    }
-
-    public void setUserID(int direction){
-        this.userID = userID;
-    }
-
 }
