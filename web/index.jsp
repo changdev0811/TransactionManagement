@@ -29,7 +29,7 @@
         <label for="accountNo">Account No</label>
     </div>
     <div class="form-label-group">
-        <input type="text" id="pinNo" name="pinNo" class="form-control" placeholder="Pin No" required>
+        <input type="password" id="pinNo" name="pinNo" class="form-control" placeholder="Pin No" required>
         <label for="pinNo">Pin No</label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
