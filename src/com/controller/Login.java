@@ -31,12 +31,12 @@ public class Login extends HttpServlet {
             HttpSession session=request.getSession();
             session.setAttribute("accountNo",accountNo);
             session.setAttribute("userLevel",userLevel);
+
             if(userLevel == 2){
                 response.sendRedirect("users.jsp");
             }else{
                 response.sendRedirect("transactions.jsp");
             }
-
         }else{
             response.sendRedirect("index.jsp");
         }

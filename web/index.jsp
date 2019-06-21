@@ -16,10 +16,7 @@
 <body>
 <%
     if (session == null || session.getAttribute("accountNo") == null) {
-        // user is not logged in, do something about it
-//        response.sendRedirect("index.jsp");
     } else {
-        // user IS logged in, do something: set model or do whatever you need
         response.sendRedirect("users.jsp");
     }
 %>
