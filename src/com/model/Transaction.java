@@ -8,6 +8,8 @@ public class Transaction {
     public String description;
     public String criteria;
     public String result;
+    public Double stack;
+    public Double price;
     public Double amount;
     public String direction;
     public int userID;
@@ -34,6 +36,22 @@ public class Transaction {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public Double getStack(){
+        return stack;
+    }
+
+    public void setStack(Double stack){
+        this.stack = stack;
+    }
+
+    public Double getPrice(){
+        return price;
+    }
+
+    public void setPrice(Double price){
+        this.price = price;
     }
 
     public Double getAmount(){

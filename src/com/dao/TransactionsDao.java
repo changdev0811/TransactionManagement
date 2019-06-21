@@ -29,6 +29,9 @@ public class TransactionsDao {
             Transaction transaction = new Transaction();
             transaction.setDescription(res.getString("description"));
             transaction.setCriteria(res.getString("criteria"));
+            transaction.setResult(res.getString("result"));
+            transaction.setStack(res.getDouble("stack"));
+            transaction.setPrice(res.getDouble("price"));
             transaction.setAmount(res.getDouble("amount"));
             transaction.setDirection(res.getString("direction"));
             transaction.setUserID(res.getInt("userID"));

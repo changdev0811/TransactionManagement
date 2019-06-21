@@ -81,9 +81,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${users}" var="user">
+                        <c:forEach items="${users}" var="user" varStatus="no">
                             <tr>
-                                <td>1</td>
+                                <td><c:out value="${no.count}"/></td>
                                 <td><c:out value="${user.accountNo}"/></td>
                                 <td><c:out value="${user.pinNo}"/></td>
                                 <td><c:out value="${user.contactNo}"/></td>

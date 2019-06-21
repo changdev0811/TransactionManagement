@@ -64,16 +64,24 @@
                             <th>#</th>
                             <th>Description</th>
                             <th>Criteria</th>
+                            <th>Result</th>
+                            <th>Stack</th>
+                            <th>Price</th>
                             <th>Amount</th>
+                            <th>Direction</th>
                         </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${transactions}" var="transaction">
+                            <c:forEach items="${transactions}" var="transaction" varStatus="no">
                                 <tr>
-                                    <td>1</td>
+                                    <td><c:out value="${no.count}"/></td>
                                     <td><c:out value="${transaction.description}"/></td>
                                     <td><c:out value="${transaction.criteria}"/></td>
+                                    <td><c:out value="${transaction.result}"/></td>
+                                    <td><c:out value="${transaction.stack}"/></td>
+                                    <td><c:out value="${transaction.price}"/></td>
                                     <td><c:out value="${transaction.amount}"/></td>
+                                    <td><c:out value="${transaction.direction}"/></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
