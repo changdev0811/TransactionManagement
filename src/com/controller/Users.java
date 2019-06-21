@@ -32,6 +32,7 @@ public class Users extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);
     }

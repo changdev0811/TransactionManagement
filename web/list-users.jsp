@@ -81,14 +81,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <%--<c:forEach items="${users}" var="user">--%>
-                            <%--<tr>--%>
-                                <%--<td>1</td>--%>
-                                <%--<td><c:out value="${user.getAccountNo}"/></td>--%>
-                                <%--<td><c:out value="${user.getPinNo}"/></td>--%>
-                                <%--<td><c:out value="${user.getContactNo}"/></td>--%>
-                            <%--</tr>--%>
-                        <%--</c:forEach>--%>
+                        <c:forEach items="${users}" var="user">
+                            <tr>
+                                <td>1</td>
+                                <td><c:out value="${user.accountNo}"/></td>
+                                <td><c:out value="${user.pinNo}"/></td>
+                                <td><c:out value="${user.contactNo}"/></td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>

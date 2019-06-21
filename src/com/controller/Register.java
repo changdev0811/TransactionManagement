@@ -20,9 +20,9 @@ public class Register extends HttpServlet {
         if(dao.register(accountNo, pinNo, contactNo)){
             response.sendRedirect("users.jsp");
         }
+//        response.sendRedirect("users.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

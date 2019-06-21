@@ -26,7 +26,7 @@ public class RegisterDao {
             st.setInt(4, 1);
 
             st.executeUpdate();
-
+            return true;
         }catch(Exception e){System.out.println(e);}
 
         return false;
