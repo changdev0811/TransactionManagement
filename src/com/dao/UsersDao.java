@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,6 +19,38 @@ public class UsersDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean login(String accountNo,String pinNo) {
+        try{
+            String query = "select *from clients where AccountNo="+accountNo+" and PinNo="+pinNo;
+            Statement stmt = connection.createStatement();
+            ResultSet res = stmt.executeQuery(query);
+            if(res.next()) {
+                return true;
+            }
+        }catch(Exception e){System.out.println(e);}
+
+        return false;
+    }
+
+    public boolean register(String accountNo,String pinNo, String contactNo) {
+        try{
+            String query="INSERT INTO clients "
+                    + "(AccountNo, PinNo, ContactNo, UserLevel) "
+                    + "VALUES " + "(?, ?, ?, ?)";
+
+            PreparedStatement st=connection.prepareStatement(query);
+            st.setInt(1, Integer.parseInt(accountNo));
+            st.setInt(2, Integer.parseInt(pinNo));
+            st.setInt(3, Integer.parseInt(contactNo));
+            st.setInt(4, 1);
+
+            st.executeUpdate();
+            return true;
+        }catch(Exception e){System.out.println(e);}
+
+        return false;
     }
 
     public ArrayList<User> getUsers() throws SQLException {

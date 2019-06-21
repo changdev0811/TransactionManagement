@@ -39,19 +39,29 @@ public class Transactions extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String forward = "/list-transactions.jsp";
         HttpSession session = request.getSession();
-        String accountNo = (String) session.getAttribute("accountNo");
-        System.out.println(accountNo);
-        try {
-            request.setAttribute("transactions", transactionsdao.getTransactions(accountNo));
-            request.setAttribute("income", transactionsdao.getIncome());
-            request.setAttribute("outgoing", transactionsdao.getOutgoing());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        if (session == null || session.getAttribute("accountNo") == null) {
+            response.sendRedirect("index.jsp");
+        }else {
+            String forward = "/list-transactions.jsp";
+            String accountNo = (String) session.getAttribute("accountNo");
+            int userLevel = 1;
+            try {
+                userLevel = transactionsdao.getUserLevel(accountNo);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                request.setAttribute("transactions", transactionsdao.getTransactions(accountNo));
+                request.setAttribute("income", transactionsdao.getIncome());
+                request.setAttribute("outgoing", transactionsdao.getOutgoing());
+                request.setAttribute("userLevel", userLevel);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-        RequestDispatcher view = request.getRequestDispatcher(forward);
-        view.forward(request, response);
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
+        }
     }
 }
